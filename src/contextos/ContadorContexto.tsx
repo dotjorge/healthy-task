@@ -7,8 +7,8 @@ interface ContadorContextoProps {
     minuteRight: string;
     secondLeft: string;
     secondRight: string;
-    isActive: () => boolean;
-    hasFinished: () => boolean;
+    isActive: boolean;
+    hasFinished: boolean;
     startCountdown: () => void;
     resetCountdown: () => void;
 }
@@ -39,13 +39,14 @@ export function ContadorProvider({ children }: ContadorProviderProps){
     const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('');
 
     function startCountdown(){
-    setActive(true);
+        console.log("Countdown iniciado!");
+        setActive(true);
     }
 
     function resetCountdown(){
-    clearTimeout(countdownTimeout);
-    setActive(false);
-    setTime(countdownMinutes * 60);
+        clearTimeout(countdownTimeout);
+        setActive(false);
+        setTime(countdownMinutes * 60);
     }
 
     useEffect(() => {
@@ -82,7 +83,6 @@ export function ContadorProvider({ children }: ContadorProviderProps){
             colors,
             isActive,
             hasFinished,
-            countdownMinutes,
             minuteLeft,
             secondLeft,
             minuteRight,

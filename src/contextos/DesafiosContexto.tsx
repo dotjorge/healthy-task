@@ -2,20 +2,29 @@ import { createContext, ReactNode, useEffect, useState } from 'react';
 import desafios from '../../desafios.json';
 import Cookies from 'js-cookie';
 
-interface desafios {
+interface Desafios {
     type: 'body' | 'eye';
     description: string;
     amount: number;
-  }
+}
+
+interface DesafiosContextoProps {
+    level: number;
+    xpAtual: number;
+    xpParaUpar: number;
+    desafiosCompletos: number;
+    desafioAtivo: Desafios;
+    subirNivel: () => void;
+    comecarNovoDesafio: () => void;
+    resetarDesafio: () => void;
+    completarDesafio: () => void;
+}
 
 interface DesafiosProviderProps {
     children: ReactNode;
-    level: number;
-    xpAtual: number;
-    desafiosCompletos: number;
 }
 
-export const DesafiosContexto = createContext({});
+export const DesafiosContexto = createContext({} as DesafiosContextoProps );
 
 export function DesafiosProvider({ children }: DesafiosProviderProps){
 
@@ -108,8 +117,6 @@ export function DesafiosProvider({ children }: DesafiosProviderProps){
             xpParaUpar,
             desafiosCompletos,
             desafioAtivo,
-            setDesafiosCompletos,
-            setXpAtual,
             subirNivel, 
             comecarNovoDesafio,
             resetarDesafio,

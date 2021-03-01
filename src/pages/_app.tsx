@@ -5,11 +5,7 @@ import { ContadorProvider } from '../contextos/ContadorContexto';
 function MyApp({ Component, pageProps }) {
   
   return (
-    <DesafiosProvider>
-      <ContadorProvider>
           <Component {...pageProps} />
-      </ContadorProvider>
-    </DesafiosProvider>
   )
 }
 

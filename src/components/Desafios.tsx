@@ -172,7 +172,7 @@ export function CarregandoDesafio(){
     return(
         <>
             <Elemento>
-                <div>Carregando desafio</div>
+                <div style={{fontSize:'40px'}}>Carregando desafio</div>
                 <IconeCarregando>
                     <span></span>
                     <span></span>

@@ -40,11 +40,12 @@ export default function Contador({...props}){
         minuteLeft,
         minuteRight,
         secondLeft,
-        secondRight} = useContext(ContadorContexto);
+        secondRight,
+        startCountdown} = useContext(ContadorContexto);
 
     return(
         <>
-            <Elemento {...props}>
+            <Elemento>
                 <div>
                     <span>
                     <span>{minuteLeft}</span>

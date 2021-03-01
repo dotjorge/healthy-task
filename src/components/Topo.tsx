@@ -35,7 +35,7 @@ const BoxShadow = styled.div`
   overflow:hidden;
   z-index:-1;
   box-shadow:0 0 50px var(--verde);
-  opacity:.5;
+  opacity:.35;
 `
 
 const Padrao = styled.div`
