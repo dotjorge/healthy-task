@@ -24,7 +24,8 @@ Corpo.Elemento = styled.div`
 
   overflow: hidden;
 
-  transition: .5s ease all;
+  //transition: .5s ease all;
+  transition: .5s ease color;
 
   @media only screen and (max-width: 600px) {
     & {
