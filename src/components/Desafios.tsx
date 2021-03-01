@@ -11,7 +11,8 @@ const Conteudo = styled.div`
 `
 
 const Elemento = styled.div`
-  padding:50px 0px;
+  //padding:50px 0px;
+
   flex:1;
   font-size:20px;
   text-align:center;
