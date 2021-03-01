@@ -1,0 +1,120 @@
+html{
+}
+body {
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    min-height: 100vh;
+    padding:0;
+    margin: 0;
+
+    font-family: 'Roboto', sans-serif;
+
+    --bg:#1d1d1d;
+    --bgCinza:#2c2c2c;
+    --maisCinza:#333333;
+    
+    --branco:rgb(230, 230, 230);
+    --preto:rgb(15, 15, 15);
+    /*--verde:#00FF66;*/
+    --verde:#00db58;
+    --cinza:gray;
+    --detalheFundo:rgb(31 31 31);
+    --contadorFundo:#202020;
+    --contadorBorda:#2c2c2c;
+    --setaCinza:var(--bg);
+    --textoXP:var(--cinza);
+
+    --sombraElemento:rgb(0 0 0 / 5%);
+    --fundoXP:linear-gradient(to top,var(--bg) 40%,transparent);
+
+    background:var(--bg);
+
+    --verdeEscuro:hsl(144 100% 41%);
+    --fadeTop:rgba(0, 128, 0, 0.35);
+}
+
+.green{
+  --branco:rgb(15, 15, 15);
+  --cinza:rgb(27, 27, 27);
+  --verde:#00db58;
+  --fundo:#00db58;
+  --setaCinza:var(--fundo);
+  --detalheFundo:hsl(144 100% 41%);
+  --bgCinza:transparent;
+  --fundoXP:rgb(24, 24, 24);
+  --maisCinza:#3333334d;
+  --contadorFundo:transparent;
+  --contadorBorda:transparent;
+  --sombraElemento:transparent;
+
+  --fadeTop:rgba(0, 128, 0, 0.35);
+}
+
+.orange{
+  --branco:rgb(15, 15, 15);
+  --cinza:rgb(27, 27, 27);
+  --verde:#FF6F42;
+  --fundo:#FF6F42;
+  --setaCinza:var(--fundo);
+  --detalheFundo:#eb653c;
+  --bgCinza:transparent;
+  --fundoXP:rgb(24, 24, 24);
+  --maisCinza:#3333334d;
+  --contadorFundo:transparent;
+  --contadorBorda:transparent;
+  --sombraElemento:transparent;
+
+  --verdeEscuro:#e9643b;
+
+  --fadeTop:#c44e2a75;
+}
+
+.oculto{
+  --ocultarTopo:0px;
+}
+
+.animarCaindo{
+  --delay:0s;
+  animation: fadeIn .3s var(--delay) ease forwards;
+  animation-delay:.2s;
+  opacity:0;
+  transform:translateY(-25px);
+}
+.animarCaindo1{
+  animation: fadeIn .3s ease forwards;
+  animation-delay:.4s;
+  opacity:0;
+  transform:translateY(-25px);
+}
+
+.animarCaindo2{
+  animation: fadeIn .3s ease forwards;
+  animation-delay:.6s;
+  opacity:0;
+  transform:translateY(-25px);
+}
+
+
+@keyframes fadeIn{
+  0%{
+    opacity:0;
+    transform:translateY(-25px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0px);
+  }
+}
+
+*{box-sizing:border-box;}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+#__next{
+  flex-grow:1;
+  display:flex;
+}
