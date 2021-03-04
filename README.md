@@ -18,7 +18,7 @@ Requisitos:
 ```
 git clone https://github.com/dotjorge/quiz-interstellar.git
 
-cd quiz-interstellar
+cd healthy-task
 
 code .
 ```
