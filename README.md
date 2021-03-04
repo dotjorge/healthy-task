@@ -1,6 +1,10 @@
 # Healthy Task - Next Level Week #4 RocketSeat
 
-Projeto criado durante a quarta edição da NLW, usando TypeScript no Next.js
+Um temporizador de 25 minutos que permite o usuário realizar tarefas como a técnica pomodoro, com a adição de ser dado um desafio no término de cada ciclo que consiste em um exercicio físico ou para os olhos.
+
+Cada desafio da uma quantidade especifica de experiência, fazendo com o que o usuário suba de nível depois de certa quantidade. Esse nível e experiência ficam salvos nos cookies pra permanecer após atualizar a página, porém essa parte ainda está sendo implementada, assim como o modal de Level Up.
+
+Criado durante a quarta edição da NLW, usando Next.js com TypeScript. O uso de Context API foi bastante explorado e usado no projeto, e por preferência individual também o Styled Components.
 
 
 # Projeto rodando na Vercel
