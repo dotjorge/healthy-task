@@ -266,12 +266,13 @@ const UserInfo = styled.div`
     background:var(--preto);
     padding:5px;
     border-radius:5px;
+
+    opacity:.9;
   }
 
 `
 
-export default function Topo({level,...props}){
-
+export default function Topo({level,git,...props}){
     return(
         <>
             <Tudo className={'animarCaindo'} {...props}>
@@ -296,12 +297,12 @@ export default function Topo({level,...props}){
                 </a>
                 <UserInfo>
                   <Image 
-                  src="https://github.com/dotjorge.png" 
+                  src={git.avatar_url ?? "https://avatars.githubusercontent.com/u/74606139?v=4"}
                   width="70%"
                   height="70%"
                   />
                   <div>
-                    <div>Jorge</div>
+                    <div>{git.name ?? "Name"}</div>
                     <div>Level {level}</div>
                   </div>
                 </UserInfo>

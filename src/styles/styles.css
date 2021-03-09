@@ -5,8 +5,8 @@ body {
     min-height: 100vh;
     padding:0;
     margin: 0;
-
     font-family: 'Roboto', sans-serif;
+    overflow:hidden;
 
     --bg:#1d1d1d;
     --bgCinza:#2c2c2c;
@@ -30,6 +30,8 @@ body {
 
     --verdeEscuro:hsl(144 100% 41%);
     --fadeTop:rgba(0, 128, 0, 0.35);
+
+    --laranja:#FF6F42;
 }
 
 .green{

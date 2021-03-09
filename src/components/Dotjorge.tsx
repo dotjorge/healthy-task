@@ -34,16 +34,31 @@ const Fundo = styled.div`
         }
 
         @media only screen and (max-width: 800px) {
+            //Project no canto direito
             & {
             display:flex;
-            justify-content:space-between;
+            //justify-content:space-between;
+            }
+            
+            //Project no canto direito
+            a:nth-child(3){
+                flex:1;
             }
 
+            a
+            
+            //Separador
             & > span{
-            display:none;
+            //display:none;
             }
         }
     }
+
+
+    a:nth-child(3){
+        margin-right:10px;
+    }
+
 `
 
 const Logo = styled.div`
@@ -58,6 +73,7 @@ const Logo = styled.div`
 
     &:hover{
         transform:scale(1.1);
+
     }
 
 `
@@ -67,10 +83,28 @@ const Botao = styled.button`
     color:black;
     background:rgba(0,0,0,0);
     border:1px solid black;
+    border:none;
     outline:none;
     border-radius:5px;
-    padding:2px 8px;
+    padding:2px 0px;
     cursor:pointer;
+
+    display:inline-flex;
+    align-items:center;
+
+    img{
+        position:relative;
+        margin-top:1px;
+        margin-right:4px;
+        image-rendering: -webkit-optimize-contrast;
+
+
+    }
+            
+
+    span:first-child{
+        opacity:.5;
+    }
 
     &:before{
         content:'>';
@@ -80,19 +114,22 @@ const Botao = styled.button`
         transition:.2s ease all;
     }
 
-    &:after{
-        content:'_';
-        font-weight:bold;
-        margin-right:4px;
-        animation:piscar 1s ease forwards infinite;
+
+    &[data-tipo="github"] {
+        &:after{
+            content:'_';
+            font-weight:bold;
+            margin-right:4px;
+            animation:piscar 1s ease forwards infinite;
 
 
-        @keyframes piscar{
-            0%{opacity:0;}
-            30%{opacity:0;}
-            50%{opacity:1;}
-            70%{opacity:0;}
-            100%{opacity:0;}
+            @keyframes piscar{
+                0%{opacity:0;}
+                30%{opacity:0;}
+                50%{opacity:1;}
+                70%{opacity:0;}
+                100%{opacity:0;}
+            }
         }
     }
 
@@ -104,6 +141,7 @@ const Botao = styled.button`
         margin-right:4px;
         opacity:1;
     }
+    
 `
 
 export default function Dotjorge({...props}){
@@ -115,8 +153,17 @@ export default function Dotjorge({...props}){
                         <Logo>jorge</Logo>
                     </a>
                     <span> | </span>
-                    <a href="https://github.com/dotjorge" target="_blank">
-                    <Botao>Project on <b>GitHub</b></Botao>
+                    <a href="https://discord.gg/wuQEusnJz2" target="_blank">
+                        <Botao>
+                            <img src="icons/discord.png" width="auto" height="12px"/>
+                            <b>Discord</b>
+                        </Botao>
+                    </a>
+                    <a href="https://github.com/dotjorge/healthy-task" target="_blank">
+                        <Botao data-tipo="github">
+                           <img src="icons/github.png" width="auto" height="12px"/>
+                            Project on <b>GitHub</b>
+                        </Botao>
                     </a>
                 </div>
             </Fundo>

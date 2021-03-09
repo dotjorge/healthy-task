@@ -5,6 +5,7 @@ import { DesafiosContexto } from '../contextos/DesafiosContexto';
 import Botao from '../components/Botao';
 import styled from 'styled-components'
 import { ContadorContexto } from '../contextos/ContadorContexto';
+import { ModalFalhei } from './ModalNivelUp';
 
 const Conteudo = styled.div`
 
@@ -186,7 +187,7 @@ export function CarregandoDesafio(){
 }
 
 export function DarDesafio(){
-    const { desafioAtivo, resetarDesafio, completarDesafio } = useContext(DesafiosContexto);
+    const { desafioAtivo, resetarDesafio, completarDesafio, exibirFalhei } = useContext(DesafiosContexto);
 
     const { resetCountdown } = useContext(ContadorContexto);
 
@@ -203,6 +204,7 @@ export function DarDesafio(){
     }
 
     function Falhei(){
+        exibirFalhei();
         ResetarTudo();
         console.log("Falhei");
     }

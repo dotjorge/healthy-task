@@ -10,7 +10,15 @@ import Dotjorge from "./Dotjorge";
 import Fundo from "./Fundo";
 import Topo from "./Topo";
 
-export default function Index({}){
+interface JSON{
+    name: string;
+  }
+  
+  interface  indexComponentProps{
+    git:JSON;
+  }
+
+export default function Index({git}:indexComponentProps){
     
     const {
         colors,
@@ -26,7 +34,7 @@ export default function Index({}){
         <>
             <Fundo className={colors}>
                 <Dotjorge/>
-                <Topo level={level}></Topo>
+                <Topo git={git} level={level}></Topo>
                 
                 <Corpo style={{ flexDirection: isActive === true || desafioAtivo != null ? 'column-reverse' : ''}}>
                 <Corpo.Elemento className={'animarCaindo1'}>
@@ -38,7 +46,7 @@ export default function Index({}){
                     </>
                     ) : (
                     <>
-                        <span>Novo ciclo iniciado</span>
+                        <span>Ciclo em andamento</span>
                         <span>{'<'}</span>
                     </>
                     )}

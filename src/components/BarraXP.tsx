@@ -6,9 +6,9 @@ import { DesafiosContexto } from '../contextos/DesafiosContexto'
 const Tudo = styled.div`
   position:fixed;
   width:100%;
-  height:40px;
+  height:30px;
   bottom:0;
-  padding:50px 20px 20px 20px;
+  padding:44px 20px 20px 20px;
   background:var(--fundoXP);
   margin:0 auto;
   display:flex;
@@ -40,15 +40,42 @@ const XpAtual = styled.div`
     border-radius:10px;
     background:var(--verde);
 
+    display:flex;
+    justify-content:flex-end;
+    align-items:flex-end;
 
+    transition:1s ease;
 
     & > span{
-        position:absolute;
-        width:20px;
-        right:calc(0px - 10px);
+        width:0;
+        height:0;
+        overflow:visible;
         display:flex;
+        align-items:flex-end;
         justify-content:center;
-        margin-top:-30px;
+
+        & > span{
+            position:relative;
+            padding:10px 15px;
+            border-radius:5px;
+            color:var(--preto);
+            font-weight:bold;
+            display:flex;
+            justify-content:center;
+            background:var(--verde);
+            transition:1s ease background;
+
+            &:after{
+                content:'';
+                --tamanho:8px;
+                border:var(--tamanho) solid transparent;
+                border-top:var(--tamanho) solid var(--verde);
+                position:absolute;
+                left:calc(50% - var(--tamanho));
+                bottom:calc(0px - var(--tamanho) * 2); //-20
+                transition:1s ease border;
+            }
+        }
 
     }
 `
@@ -64,7 +91,7 @@ export default function BarraXP(){
                 <Barra>
                     <XpAtual style={{width:`${porcentoProximoLevel}%`}}>
                         <span>
-                            {xpAtual}xp
+                            <span>{xpAtual}xp</span>
                         </span>
                     </XpAtual>
                 </Barra>

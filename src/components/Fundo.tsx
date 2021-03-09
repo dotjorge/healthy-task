@@ -5,6 +5,7 @@ const Background = styled.div`
     flex-grow:1;
     transition:1s ease background;
     background:var(--fundo);
+
 `
 
 const Texto = styled.div`
