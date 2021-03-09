@@ -1,6 +1,7 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import React, { createContext, ReactNode, useEffect, useState } from 'react';
 import desafios from '../../desafios.json';
 import Cookies from 'js-cookie';
+import ModalNivelUp from '../components/ModalNivelUp';
 
 interface Desafios {
     type: 'body' | 'eye';
@@ -22,33 +23,38 @@ interface DesafiosContextoProps {
 
 interface DesafiosProviderProps {
     children: ReactNode;
+    level: number;
+    nivel: number;
+    xpAtual: number;
+    desafiosCompletos: number;
 }
 
 export const DesafiosContexto = createContext({} as DesafiosContextoProps );
 
-export function DesafiosProvider({ children }: DesafiosProviderProps){
+export function DesafiosProvider({ children, nivel, ...rest }: DesafiosProviderProps){
 
-    const [level, setLevel] = useState(1);
-    const [xpAtual, setXpAtual] = useState(32);
-    const [desafiosCompletos, setDesafiosCompletos] = useState(0);
+    const [level, setLevel] = useState(rest.level ?? 1);
+    const [xpAtual, setXpAtual] = useState(rest.xpAtual ?? 0);
+    const [desafiosCompletos, setDesafiosCompletos] = useState(rest.desafiosCompletos ?? 0);
     const [desafioAtivo, setDesafioAtual] = useState(null);
 
     const xpParaUpar = Math.pow((level + 1) * 4, 2);
 
-
+    //console.log("...rest:\nlevel: " + rest.level + "\n xpAtual: " + rest.xpAtual + "\nDesafiosCompletos: " + rest.desafiosCompletos);
+    
     //Notificaçao
     useEffect(() =>{
         Notification.requestPermission();
     },[])
 
     //Cookies
-    /*
     useEffect(() => {
         Cookies.set('level', String(level));
         Cookies.set('xpAtual', String(xpAtual));
         Cookies.set('desafiosCompletos', String(desafiosCompletos));
-      }, [level, xpAtual, desafiosCompletos])
-      */
+        console.log("> Salvando cookies:\nlevel: " + level + "\nxpAtual: " + xpAtual + "\ndesafiosCompletos: " + desafiosCompletos);
+  }, [level, xpAtual, desafiosCompletos])
+ 
 
     function subirNivel(){
         setLevel(level + 1);
@@ -101,13 +107,6 @@ export function DesafiosProvider({ children }: DesafiosProviderProps){
         setXpAtual(xpFinal);
         setDesafioAtual(null);
         setDesafiosCompletos(desafiosCompletos + 1);
-
-
-        //Cookies
-        Cookies.set('level', String(level));
-        Cookies.set('xpAtual', String(xpAtual));
-        Cookies.set('desafiosCompletos', String(desafiosCompletos));
-
     }
 
     return(
@@ -123,6 +122,7 @@ export function DesafiosProvider({ children }: DesafiosProviderProps){
             completarDesafio
             }}>
             {children}
+            <ModalNivelUp/>
         </DesafiosContexto.Provider>
     );
 }

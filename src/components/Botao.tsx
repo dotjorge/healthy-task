@@ -37,10 +37,12 @@ const IniciarTarefa = styled.button`
   &[data-teste="iniciar"] {
     &:before{
     content:'';
+    position:absolute;
     width:0;height:0;
     border:10px solid transparent;
     border-left:10px solid var(--cor);
-    margin-right:-21px;
+    //margin-right:-21px;
+    left:10px;
     opacity:0;
     transition:.2s ease;
     }
@@ -60,20 +62,22 @@ const IniciarTarefa = styled.button`
     content:'';
     position:absolute;
     width:100%;height:100%;
-    left:0;right:0;
+    left:0;
     border-radius:10px;
     box-shadow:0 0 0px var(--corBg);
     opacity:.4;
     transition:.2s ease;
+    z-index:-1;
   }
 
   &:not(:disabled):hover::before{
-    margin-right:0;
+    //margin-right:0;
+    left:20px;
     opacity:1;
 
   }
   &:not(:disabled):hover:after{
-    box-shadow:-5px 5px 20px var(--corBg);
+    box-shadow:0 0 25px var(--corBg);
   }
 
 

@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import BarraXP from "../components/BarraXP";
-import Botao from '../components/Botao';
-import Corpo from "../components/Corpo";
-import Fundo from "../components/Fundo";
-import Topo from "../components/Topo";
-import Desafio, { CarregandoDesafio, DarDesafio, InicieUmCiclo } from "../components/Desafios";
 import Head from 'next/head'
-import Contador from '../components/Contador';
 
-
-//Contexto
-import { useContext } from 'react'
-
-import { ContadorContexto, ContadorProvider } from '../contextos/ContadorContexto';
-import { DesafiosContexto, DesafiosProvider } from '../contextos/DesafiosContexto';
+import { ContadorProvider } from '../contextos/ContadorContexto';
+import { DesafiosProvider } from '../contextos/DesafiosContexto';
 import Index from '../components/Index';
 
+import {GetServerSideProps} from 'next';
 
+interface  indexProps{
+  level: number;
+  xpAtual: number;
+  desafiosCompletos: number;
+}
 
+export default function Home(props: indexProps) {
 
-export default function Home() {
+  console.log(props);
 
   return (
     <>
-      <DesafiosProvider>
+      <DesafiosProvider 
+      nivel={props.level}  
+      level={props.level}  
+      xpAtual={props.xpAtual} 
+      desafiosCompletos={props.desafiosCompletos}
+      >
         <ContadorProvider>
 
           <Head>
@@ -37,4 +38,15 @@ export default function Home() {
       </DesafiosProvider>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const {  level, xpAtual, desafiosCompletos } = ctx.req.cookies;
+  return {
+    props:{
+      level: Number(level),
+      xpAtual: Number(xpAtual),
+      desafiosCompletos: Number(desafiosCompletos)
+    }
+  }
 }

@@ -30,7 +30,7 @@ export function ContadorProvider({ children }: ContadorProviderProps){
     const [isActive, setActive] = useState(false);
     const [hasFinished, setHasFinished] = useState(false);
 
-    const countdownMinutes = 0.05;
+    const countdownMinutes = 0.1;
     const [time, setTime] = useState(countdownMinutes * 60);
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
@@ -60,12 +60,12 @@ export function ContadorProvider({ children }: ContadorProviderProps){
     if(isActive && time > 0){
         countdownTimeout = setTimeout(() =>{
         setTime(time - 1);
-        console.log("minuteLeft: "+minuteLeft);
+        console.log("secondRight: "+secondRight);
     }, 1000);
 
         //Perto de acabar
-        if(Number(minuteLeft) < 1){
-        //setColors('orange');
+        if(Number(secondRight) < 4){
+        setColors('orange');
         }
 
     }

@@ -10,7 +10,6 @@ const Tudo = styled.div`
   transition:1s ease background;
 
   max-height:var(--ocultarTopo);
-  background:var(--verde);
 
   //Pattern
   background-color: var(--verde);
@@ -35,7 +34,7 @@ const BoxShadow = styled.div`
   overflow:hidden;
   z-index:-1;
   box-shadow:0 0 50px var(--verde);
-  opacity:.35;
+  opacity:.4;
 `
 
 const Padrao = styled.div`
@@ -61,6 +60,10 @@ const Padrao = styled.div`
       100%{transform:translateY(0)}
     }
   }
+  
+
+  //Degrade do topo
+  /*
   &:after{
     content:'';
     position:absolute;
@@ -68,6 +71,7 @@ const Padrao = styled.div`
     left:0;top:0;
     background:linear-gradient(var(--fadeTop),var(--verde))no-repeat;
   }
+  */
 
 `
 
@@ -98,6 +102,38 @@ const Setas = styled.div`
     bottom:calc(var(--tamanho) - var(--tamanho) - var(--tamanho) - var(--tamanho) + 0px);
 
     transition:1s ease border;
+  }
+`
+
+const SetaCima = styled.div`
+  &:before{
+    content:'';
+    width:0;
+    height:0;
+    --tamanho:16px;
+    border:var(--tamanho) solid transparent;
+    border-bottom:var(--tamanho) solid var(--verde);
+    position:absolute;
+    left:calc(50% - var(--tamanho));
+    top:calc(var(--tamanho) - var(--tamanho) - var(--tamanho) - var(--tamanho));
+
+    transition:1s ease border;
+
+  }
+
+  &:after{
+    content:'';
+    width:0;
+    height:0;
+    --tamanho:8px;
+    border:var(--tamanho) solid transparent;
+    border-bottom:var(--tamanho) solid var(--setaCinza);
+    position:absolute;
+    left:calc(50% - var(--tamanho));
+    top:calc(var(--tamanho) - var(--tamanho) - var(--tamanho) - var(--tamanho) + 0px);
+
+    transition:1s ease border;
+    opacity:.5;
   }
 `
 
@@ -190,18 +226,16 @@ const Logo = styled.div`
   & > div{
     width:150px;
     @media only screen and (max-width: 600px) {
-    & {
-      display:none;
+      & {
+        display:none;
+      }
     }
-  }
   }
 
   div div:last-child{
     font-weight:900;
     margin-top:-10px;
   }
-
-
 `
 
 const UserInfo = styled.div`
@@ -237,12 +271,13 @@ const UserInfo = styled.div`
 `
 
 export default function Topo({level,...props}){
+
     return(
         <>
             <Tudo className={'animarCaindo'} {...props}>
               <BoxShadow/>
               <Padrao/>
-              <Setas/>
+              <SetaCima/>
               <Elemento>
               <BemVindo>
                   <div>#Bem</div>
@@ -276,12 +311,4 @@ export default function Topo({level,...props}){
     );
   };
 
-/*
-export default function AlternativesForm({children,corFundo,...props}){
-    return(
-    <>
-    <AlternativesFormDiv corFundo_={corFundo} {...props}>{children}</AlternativesFormDiv>
-    </>
-    );
-  };
-  */
+

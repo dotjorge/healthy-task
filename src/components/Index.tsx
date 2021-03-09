@@ -6,6 +6,7 @@ import Botao from "./Botao";
 import Contador from "./Contador";
 import Corpo from "./Corpo";
 import Desafio, { InicieUmCiclo, CarregandoDesafio, DarDesafio } from "./Desafios";
+import Dotjorge from "./Dotjorge";
 import Fundo from "./Fundo";
 import Topo from "./Topo";
 
@@ -24,6 +25,7 @@ export default function Index({}){
     return(
         <>
             <Fundo className={colors}>
+                <Dotjorge/>
                 <Topo level={level}></Topo>
                 
                 <Corpo style={{ flexDirection: isActive === true || desafioAtivo != null ? 'column-reverse' : ''}}>
