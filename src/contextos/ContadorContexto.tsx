@@ -30,7 +30,7 @@ export function ContadorProvider({ children }: ContadorProviderProps){
     const [isActive, setActive] = useState(false);
     const [hasFinished, setHasFinished] = useState(false);
 
-    const countdownMinutes = 0.1;
+    const countdownMinutes = 25;
     const [time, setTime] = useState(countdownMinutes * 60);
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;

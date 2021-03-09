@@ -141,6 +141,10 @@ const Botao = styled.button`
         margin-right:4px;
         opacity:1;
     }
+
+    b{
+        margin-left:8px;
+    }
     
 `
 
