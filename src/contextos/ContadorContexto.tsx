@@ -60,11 +60,11 @@ export function ContadorProvider({ children }: ContadorProviderProps){
     if(isActive && time > 0){
         countdownTimeout = setTimeout(() =>{
         setTime(time - 1);
-        console.log("secondRight: "+secondRight);
+        console.log("minuteLeft: "+minuteLeft);
     }, 1000);
 
-        //Perto de acabar
-        if(Number(secondRight) < 4){
+        //Perto de acabar (menor que 10min)
+        if(Number(minuteLeft) < 1){
         setColors('orange');
         }
 
