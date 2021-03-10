@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Tudo = styled.div`
-  margin-top:40px;
+  //margin-top:40px;
   padding:0 20px;
 
   display:flex;
@@ -15,21 +15,17 @@ Corpo.Elemento = styled.div`
   display:flex;
   flex-direction:column;
   padding: 30px;
-  //border-radius: 25px;
   color: var(--branco);
-  //margin-bottom: 40px;
-
-  //background: var(--bgCinza);
-  //box-shadow: -10px 10px 15px var(--sombraElemento);
-
   overflow: hidden;
 
-  //transition: .5s ease all;
   transition: .5s ease color;
 
   @media only screen and (max-width: 600px) {
     & {
-      //padding:0 30px;
+      padding:0;
+      padding-bottom:10px;
+      //Margem depois do topo
+      padding-top:20px;
     }
   }
 
@@ -41,7 +37,7 @@ Corpo.DesafiosCompletos = styled.div`
   flex:1;
   justify-content:space-between;
   margin-bottom:10px;
-  font-size:24px;
+  font-size:1.5rem;
   padding-bottom:10px;
   border-bottom:1px solid var(--maisCinza);
   & > span:first-child{
@@ -61,7 +57,7 @@ Corpo.SpaceBetween = styled.div`
       align-items:center;
     }
     & div:first-child{
-      margin-top:40px;
+      margin-top:20px;
     }
   }
 

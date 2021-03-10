@@ -27,12 +27,12 @@ const Barra = styled.div`
     background:#313131;
     border-radius:10px;
     height:10px;
-    margin:0 10px;
+    margin:0 38px;
 `
 
 const XpAtual = styled.div`
     position:absolute;
-    width:50%;
+    width:0%;
     height:100%;
     left:0;
     top:0;

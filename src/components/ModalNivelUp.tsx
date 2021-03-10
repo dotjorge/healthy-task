@@ -273,7 +273,7 @@ export default function ModalNivelUp({...props}){
             <Verde>
                 <Fundo {...props}>
                     <div>
-                        <h1 style={{fontSize:'50px'}}>
+                        <h1 style={{fontSize:'3.125rem'}}>
                         +{ xp }xp
                         <AnimacaoXp>+</AnimacaoXp>
                         </h1>
@@ -297,12 +297,12 @@ export default function ModalNivelUp({...props}){
             <Falhei>
                 <Fundo {...props}>
                     <div>
-                        <h1>
+                        <h1 style={{fontSize:'8.375rem'}}>
                         Oops...
                         <AnimacaoFalhei>:(</AnimacaoFalhei>
                         </h1>
                         <h2>
-                            Dessa vez não deu.
+                            Dessa vez não deu
                         </h2>
                         <span>
                             Nenhum xp foi ganho.

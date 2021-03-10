@@ -30,7 +30,7 @@ export function ContadorProvider({ children }: ContadorProviderProps){
     const [isActive, setActive] = useState(false);
     const [hasFinished, setHasFinished] = useState(false);
 
-    const countdownMinutes = 25;
+    const countdownMinutes = 0.1;
     const [time, setTime] = useState(countdownMinutes * 60);
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
@@ -64,7 +64,8 @@ export function ContadorProvider({ children }: ContadorProviderProps){
     }, 1000);
 
         //Perto de acabar (menor que 10min)
-        if(Number(minuteLeft) < 1){
+        //if(Number(minuteLeft) < 1){
+        if(Number(secondRight) < 4){
         setColors('orange');
         }
 

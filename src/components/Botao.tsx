@@ -18,10 +18,10 @@ const IniciarTarefa = styled.button`
   background-position:24% 0, center;
 
 
-  font-size:26px;
+  font-size:1.625rem;
   --cor:var(--preto);
   color:var(--cor);
-  padding:20px 40px;
+  padding:1.25rem 2.5rem;
   border-radius:10px;
   outline:none;
   border:none;

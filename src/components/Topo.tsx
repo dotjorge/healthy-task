@@ -142,6 +142,8 @@ const Elemento = styled.div`
   max-width:1024px;
   margin:0 auto;
   display:flex;
+  align-items:center;
+  
   padding:10px 0;
 
   color:var(--branco);
@@ -227,7 +229,7 @@ const Logo = styled.div`
     width:150px;
     @media only screen and (max-width: 600px) {
       & {
-        display:none;
+        //display:none;
       }
     }
   }
@@ -241,6 +243,7 @@ const Logo = styled.div`
 const UserInfo = styled.div`
   flex:1;
   display:flex;
+  align-items:center;
   flex-direction:row-reverse;
   position:relative;
   color:var(--preto);
@@ -253,18 +256,21 @@ const UserInfo = styled.div`
 
   & > div{
     margin-right:15px;
-    text-align:right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
   }
 
   div:first-child{
-    font-size:30px;
+    font-size:1.875rem;
     font-weight:500;
   }
 
   & > div > div:last-child{
     color:var(--verde);
     background:var(--preto);
-    padding:5px;
+    padding:5px 10px;
     border-radius:5px;
 
     opacity:.9;
@@ -296,14 +302,14 @@ export default function Topo({level,git,...props}){
 
                 </a>
                 <UserInfo>
-                  <Image 
+                  <img 
                   src={git.avatar_url ?? "https://avatars.githubusercontent.com/u/74606139?v=4"}
-                  width="70%"
-                  height="70%"
+                  width="55px"
+                  height="55px"
                   />
                   <div>
                     <div>{git.name ?? "Name"}</div>
-                    <div>Level {level}</div>
+                    <div>Level <b>{level}</b></div>
                   </div>
                 </UserInfo>
               </Elemento>

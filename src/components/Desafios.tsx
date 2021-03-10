@@ -8,21 +8,25 @@ import { ContadorContexto } from '../contextos/ContadorContexto';
 import { ModalFalhei } from './ModalNivelUp';
 
 const Conteudo = styled.div`
-
+      @media only screen and (max-width: 600px) {
+        & {
+           font-size:50%;
+        }
+    }
 `
 
 const Elemento = styled.div`
   //padding:50px 0px;
 
   flex:1;
-  font-size:20px;
+  font-size:1.25rem;
   text-align:center;
   color:var(--cinza);
   
   transition: 1s ease all;
 
   & > div:first-child{
-    font-size:30px;
+    font-size:1.875rem;
   }
 
   h2{
@@ -31,6 +35,7 @@ const Elemento = styled.div`
   }
 
   h3{
+    font-size:1rem;
     color:var(--branco);
     margin:0;
     font-weight:400;
@@ -63,7 +68,7 @@ const Elemento = styled.div`
   @media only screen and (max-width: 600px) {
     & {
       padding:0 30px;
-      padding-bottom:50px;
+      padding-bottom:20px;
     }
   }
 
@@ -76,7 +81,7 @@ position:relative;
 display:flex;
 justify-content:center;
 flex:1;
-margin:20px 0;
+margin:1.25rem 0;
 --cor:var(--cinza);
 
 & > span{
@@ -174,7 +179,7 @@ export function CarregandoDesafio(){
     return(
         <>
             <Elemento>
-                <div style={{fontSize:'40px'}}>Carregando desafio</div>
+                <div style={{fontSize:'2.5rem'}}>Carregando desafio</div>
                 <IconeCarregando>
                     <span></span>
                     <span></span>
@@ -214,7 +219,7 @@ export function DarDesafio(){
             <Elemento>
                 <h4>Novo desafio!</h4>
                 <h2>Ganhe {desafioAtivo.amount} xp</h2>
-                <img src={`icons/${desafioAtivo.type}.svg`}/>
+                <img style={{height:'4rem'}} src={`icons/${desafioAtivo.type}.svg`}/>
                 <h3>{desafioAtivo.description}</h3>
 
                     <footer>
@@ -239,6 +244,7 @@ export function DarDesafio(){
                         </Botao>
 
                         <Botao 
+                        onClick={() => Completei()} 
                         data-mobile={"mostrar"} 
                         style={{
                         }}
@@ -247,6 +253,7 @@ export function DarDesafio(){
                         </Botao>
 
                         <Botao 
+                        onClick={() => Falhei()} 
                         data-cor={'vermelho'} 
                         data-mobile={"mostrar"} 
                         style={{

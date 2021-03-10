@@ -10,6 +10,7 @@ const Fundo = styled.div`
     height:40px;
     padding:0 10px;
     color:black;
+    font-size:16px;
 
     &:before{
         content:'';
