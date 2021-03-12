@@ -2,14 +2,19 @@ import styled from 'styled-components'
 
 
 const Fundo = styled.div`
+
+    //Variaveis
+    --fundo:rgba(0,0,0,.1);
+    --texto:black;
+    
     position:relative;
-    background:rgba(0,0,0,.1);
+    background:var(--fundo);
     display:flex;
     justify-content:center;
     align-items:center;
     height:40px;
     padding:0 10px;
-    color:black;
+    color:var(--texto);
     font-size:16px;
 
     &:before{
@@ -26,7 +31,7 @@ const Fundo = styled.div`
         width:100%;
         max-width:1024px;
         display:flex;
-
+        align-items:center;
         opacity:.7;
         
         & > span{
@@ -81,9 +86,8 @@ const Logo = styled.div`
 
 const Botao = styled.button`
     font-family:monospace;
-    color:black;
+    color:var(--texto);
     background:rgba(0,0,0,0);
-    border:1px solid black;
     border:none;
     outline:none;
     border-radius:5px;
@@ -104,7 +108,7 @@ const Botao = styled.button`
             
 
     span:first-child{
-        opacity:.5;
+        opacity:0;
     }
 
     &:before{
@@ -143,8 +147,9 @@ const Botao = styled.button`
         opacity:1;
     }
 
-    b{
-        margin-left:8px;
+    i{
+        font-style:normal;
+        margin-right:8px;
     }
     
 `
@@ -160,14 +165,14 @@ export default function Dotjorge({...props}){
                     <span> | </span>
                     <a href="https://discord.gg/wuQEusnJz2" target="_blank">
                         <Botao>
-                            <img src="icons/discord.png" width="auto" height="12px"/>
+                            <img src="icons/discord.png" width="auto" height="11px"/>
                             <b>Discord</b>
                         </Botao>
                     </a>
                     <a href="https://github.com/dotjorge/healthy-task" target="_blank">
                         <Botao data-tipo="github">
-                           <img src="icons/github.png" width="auto" height="12px"/>
-                            Project on <b>GitHub</b>
+                           <img src="icons/github.png" width="auto" height="11px"/>
+                            <i>Project on</i><b>GitHub</b>
                         </Botao>
                     </a>
                 </div>
