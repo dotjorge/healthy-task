@@ -14,7 +14,7 @@ Corpo.Elemento = styled.div`
   margin:0 auto;
   display:flex;
   flex-direction:column;
-  padding: 30px;
+  padding: 30px 0px;
   color: var(--branco);
   overflow: hidden;
 
