@@ -30,7 +30,7 @@ export default function Home(props: indexProps) {
         <ContadorProvider>
 
           <Head>
-            <title>Healthy Task - Conclua tarefas de maneira saudável e produtiva</title>
+            <title>Healthy Task - Faça tarefas de maneira saudável e produtiva</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           </Head>
 
