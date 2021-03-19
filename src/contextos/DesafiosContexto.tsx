@@ -21,6 +21,8 @@ interface DesafiosContextoProps {
     resetarDesafio: () => void;
     completarDesafio: () => void;
     exibirFalhei:() => void;
+    fecharModal:() => void;
+    modo:string;
 }
 
 interface DesafiosProviderProps {
@@ -29,11 +31,12 @@ interface DesafiosProviderProps {
     nivel: number;
     xpAtual: number;
     desafiosCompletos: number;
+    modo:string;
 }
 
 export const DesafiosContexto = createContext({} as DesafiosContextoProps );
 
-export function DesafiosProvider({ children, nivel, ...rest }: DesafiosProviderProps){
+export function DesafiosProvider({ children, nivel, modo, ...rest }: DesafiosProviderProps){
 
     const [level, setLevel] = useState(rest.level ?? 1);
     const [xpAtual, setXpAtual] = useState(rest.xpAtual ?? 0);
@@ -48,6 +51,7 @@ export function DesafiosProvider({ children, nivel, ...rest }: DesafiosProviderP
 
     //console.log("...rest:\nlevel: " + rest.level + "\n xpAtual: " + rest.xpAtual + "\nDesafiosCompletos: " + rest.desafiosCompletos);
     
+
     //Notificaçao
     useEffect(() =>{
         Notification.requestPermission();
@@ -55,9 +59,9 @@ export function DesafiosProvider({ children, nivel, ...rest }: DesafiosProviderP
 
     //Cookies
     useEffect(() => {
-        Cookies.set('level', String(level));
-        Cookies.set('xpAtual', String(xpAtual));
-        Cookies.set('desafiosCompletos', String(desafiosCompletos));
+        Cookies.set('level'+modo, String(level));
+        Cookies.set('xpAtual'+modo, String(xpAtual));
+        Cookies.set('desafiosCompletos'+modo, String(desafiosCompletos));
         console.log("> Salvando cookies:\nlevel: " + level + "\nxpAtual: " + xpAtual + "\ndesafiosCompletos: " + desafiosCompletos);
   }, [level, xpAtual, desafiosCompletos])
  
@@ -140,6 +144,12 @@ export function DesafiosProvider({ children, nivel, ...rest }: DesafiosProviderP
 
     }
 
+    function fecharModal(){
+        setModalFalhei(null);
+        setModalXp(null);
+        setModalAberto(null);
+    }
+
     return(
         <DesafiosContexto.Provider value={{ 
             level, 
@@ -152,7 +162,9 @@ export function DesafiosProvider({ children, nivel, ...rest }: DesafiosProviderP
             comecarNovoDesafio,
             resetarDesafio,
             completarDesafio,
-            exibirFalhei
+            exibirFalhei,
+            fecharModal,
+            modo
             }}>
             {children}
             {modalAberto && <ModalNivelUp/>}

@@ -195,6 +195,7 @@ const Logo = styled.div`
   align-items:center;
   color:var(--preto);
   cursor:pointer;
+  font-weight:700;
 
   & > span{
     position:relative;
@@ -235,7 +236,8 @@ const Logo = styled.div`
   }
 
   div div:last-child{
-    font-weight:900;
+    //font-weight:900;
+    font-weight:500;
     margin-top:-10px;
   }
 `

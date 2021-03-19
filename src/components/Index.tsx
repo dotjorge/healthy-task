@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useContext } from "react";
 import { ContadorContexto } from "../contextos/ContadorContexto";
 import { DesafiosContexto } from "../contextos/DesafiosContexto";
@@ -27,7 +28,7 @@ export default function Index({git}:indexComponentProps){
         startCountdown,
         resetCountdown} = useContext(ContadorContexto);
     
-      const { desafioAtivo, desafiosCompletos, level } = useContext(DesafiosContexto);
+      const { modo, desafioAtivo, desafiosCompletos, level } = useContext(DesafiosContexto);
     
         
     return(
@@ -38,6 +39,25 @@ export default function Index({git}:indexComponentProps){
                 
                 <Corpo style={{ flexDirection: isActive === true || desafioAtivo != null ? 'column-reverse' : ''}}>
                 <Corpo.Elemento className={'animarCaindo1'}>
+                    { modo === '_debug' ? 
+                    (<Corpo.AlertaVersaoTeste><div></div>Essa é uma versão para testes!
+                    <Link href="/">
+                    <a>
+                    <button>Versão normal</button>
+                    </a>
+                    </Link>
+                    </Corpo.AlertaVersaoTeste>) 
+                    :
+                    (
+                    <>
+                    { !isActive && !desafioAtivo &&
+                    <Corpo.AlertaVersaoTeste>
+                        <h3>Olá,</h3> seja mais produtivo e saudável hoje.
+                    </Corpo.AlertaVersaoTeste>
+                    }
+                    </>
+                    )
+                    }
                 <Corpo.DesafiosCompletos>
                 { !isActive ? (
                     <>

@@ -243,7 +243,7 @@ const AnimacaoFalhei = styled.div `
 `
 
 export default function ModalNivelUp({...props}){
-    const { level } = useContext(DesafiosContexto);
+    const { level, fecharModal } = useContext(DesafiosContexto);
     return(
         <>
             <Verde>
@@ -259,7 +259,7 @@ export default function ModalNivelUp({...props}){
                         <span>
                             Você alcançou um novo nível.
                         </span>
-                        <button>&lt;</button>
+                        <button onClick={()=>fecharModal()}>&lt;</button>
                     </div>
                 </Fundo>
             </Verde>
@@ -268,6 +268,7 @@ export default function ModalNivelUp({...props}){
   };
 
  export function ModalXp({xp,...props}){
+    const { fecharModal } = useContext(DesafiosContexto);
     return(
         <>
             <Verde>
@@ -283,7 +284,7 @@ export default function ModalNivelUp({...props}){
                         <span>
                             Continue completando desafios para upar.
                         </span>
-                        <button>&lt;</button>
+                        <button onClick={()=>fecharModal()}>&lt;</button>
                     </div>
                 </Fundo>
             </Verde>
@@ -292,6 +293,7 @@ export default function ModalNivelUp({...props}){
   };
 
   export function ModalFalhei({...props}){
+    const { fecharModal } = useContext(DesafiosContexto);
     return(
         <>
             <Falhei>
@@ -307,7 +309,7 @@ export default function ModalNivelUp({...props}){
                         <span>
                             Nenhum xp foi ganho.
                         </span>
-                        <button>&lt;</button>
+                        <button onClick={()=>fecharModal()}>&lt;</button>
                     </div>
                 </Fundo>
             </Falhei>
