@@ -16,6 +16,7 @@ interface  indexProps{
   xpAtual: number;
   desafiosCompletos: number;
   git:JSON;
+  nome:string;
 }
 
 export default function Home(props: indexProps) {
@@ -26,7 +27,8 @@ export default function Home(props: indexProps) {
       modo={'_debug'} 
       level={props.level}  
       xpAtual={props.xpAtual} 
-      desafiosCompletos={props.desafiosCompletos}
+      desafiosCompletos={props.desafiosCompletos} 
+      nome={props.nome}
       >
         <ContadorProvider>
 
