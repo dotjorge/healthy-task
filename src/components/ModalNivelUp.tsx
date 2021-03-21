@@ -1,6 +1,8 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DesafiosContexto } from '../contextos/DesafiosContexto';
 import styled from 'styled-components'
+import { GetServerSideProps } from 'next';
+import Cookies from 'js-cookie';
 
 const Falhei = styled.div`
     position:absolute;
@@ -20,7 +22,7 @@ const Fundo = styled.div`
     position:absolute;
     width:100%;
     height:100%;
-    backdrop-filter:blur(5px);
+    //backdrop-filter:blur(5px);
 
     //Fundo
     &:before{
@@ -292,27 +294,175 @@ export default function ModalNivelUp({...props}){
     );
   };
 
-  export function ModalFalhei({...props}){
-    const { fecharModal } = useContext(DesafiosContexto);
+export function ModalFalhei({...props}){
+const { fecharModal } = useContext(DesafiosContexto);
+return(
+    <>
+        <Falhei>
+            <Fundo {...props}>
+                <div>
+                    <h1 style={{fontSize:'8.375rem'}}>
+                    Oops...
+                    <AnimacaoFalhei>:(</AnimacaoFalhei>
+                    </h1>
+                    <h2>
+                        Dessa vez não deu
+                    </h2>
+                    <span>
+                        Nenhum xp foi ganho.
+                    </span>
+                    <button onClick={()=>fecharModal()}>&lt;</button>
+                </div>
+            </Fundo>
+        </Falhei>
+    </>
+);
+};
+
+  
+const Nome = styled.div`
+    position:absolute;
+    width:100%;
+    height:100%;
+    --cor:var(--branco);
+`
+
+const NomeFundo = styled.div`
+
+    position:absolute;
+    width:100%;
+    height:100%;
+    z-index:50;
+
+    //backdrop-filter:blur(5px);
+
+    //Fundo
+    &:before{
+        content:'';
+        width:100%;
+        height:100%;
+        position:absolute;
+        background:var(--bg);
+        opacity:.8;
+        z-index:-1;
+    }
+
+    color:var(--preto);
+    letter-spacing:1px;
+
+    //Animacao
+    animation:aparecer .5s 1s ease forwards;
+    opacity:0;transform:scale(1.5);visibility:hidden;
+    @keyframes aparecer{
+        0%{opacity:0;transform:translateY(-25px);visibility:hidden;}
+        100%{opacity:1;transform:translateY(0);visibility:visible;}
+    }
+
+    > div{
+        position:absolute;
+        right:10px;
+        top:140px;
+        width:100%;
+        max-width:300px;
+        background:var(--verde);
+        border-radius:25px;
+        padding:20px;
+        opacity:.9;
+        
+        &:after{
+            content:'';
+            border:20px solid transparent;
+            border-bottom:20px solid var(--verde);
+            position:absolute;
+            top:-40px;
+            right:40px;
+        }
+
+
+    }
+
+    input{
+        padding:10px 20px;
+        border:none;
+        outline:none;
+        border-radius:10px;
+        background:var(--preto);
+        color:var(--branco);
+    }
+
+    button{
+        position:relative;
+        margin-top:10px;
+        font-size:20px;
+        font-weight:900;
+        padding:5px 20px;
+        border:none;
+        background:var(--preto);
+        border-radius:5px;
+        color:var(--branco);
+        cursor:pointer;
+        outline:none;
+        transition:.1s ease;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+
+        &:disabled{
+            opacity:.7;
+            cursor:default;
+        }
+    }
+
+    h1{
+        margin:0;
+        font-weight:400;
+        strong{
+            font-weight:900;
+        }
+    }
+
+    h2{
+        margin:0;
+    }
+    
+    
+`
+export function ModalNome({...props}){
+    const { nome, trocarNome, fecharModal } = useContext(DesafiosContexto);
+    const [nomeEscolhido, setNomeEscolhido] = useState("");
     return(
         <>
-            <Falhei>
-                <Fundo {...props}>
+            <Nome>
+                <NomeFundo {...props}>
                     <div>
-                        <h1 style={{fontSize:'8.375rem'}}>
-                        Oops...
-                        <AnimacaoFalhei>:(</AnimacaoFalhei>
-                        </h1>
-                        <h2>
-                            Dessa vez não deu
-                        </h2>
-                        <span>
-                            Nenhum xp foi ganho.
-                        </span>
-                        <button onClick={()=>fecharModal()}>&lt;</button>
+                        <h1>Para <strong>começar</strong>,</h1>
+                        <form
+                        autoComplete="off"
+                        onSubmit={function (infosDoEvento) {
+                        infosDoEvento.preventDefault();
+                        trocarNome(nomeEscolhido);
+                        }}
+                        >
+                            <input 
+                            name="nomeUsuario"
+                            type="text"
+                            onChange={function (infosDoEvento) {
+                                console.log(infosDoEvento.target.value);
+                                setNomeEscolhido(infosDoEvento.target.value);
+                                }} 
+                            placeholder={'Digite seu nome...'} 
+                            maxLength={7}
+                            ></input>
+                            <button 
+                            onClick={
+                                () => {
+                                    }
+                            } 
+                            disabled={nomeEscolhido.length === 0}>Continuar</button>
+                        </form>
                     </div>
-                </Fundo>
-            </Falhei>
+                </NomeFundo>
+            </Nome>
         </>
     );
-  };
+};

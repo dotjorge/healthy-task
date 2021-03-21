@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
+import React, { useContext } from 'react'
+import { ModalNome } from './ModalNivelUp'
+import { DesafiosContexto } from '../contextos/DesafiosContexto'
 
 const Tudo = styled.div`
   position:relative;
@@ -281,6 +284,7 @@ const UserInfo = styled.div`
 `
 
 export default function Topo({level,git,...props}){
+  const { nome } = useContext(DesafiosContexto);
     return(
         <>
             <Tudo className={'animarCaindo'} {...props}>
@@ -308,9 +312,10 @@ export default function Topo({level,git,...props}){
                   src={git.avatar_url ?? "https://avatars.githubusercontent.com/u/74606139?v=4"}
                   width="55px"
                   height="55px"
+                  style={{display:'none'}}
                   />
                   <div>
-                    <div>{git.name ?? "Name"}</div>
+                    <div>{nome}</div>
                     <div>Level <b>{level}</b></div>
                   </div>
                 </UserInfo>

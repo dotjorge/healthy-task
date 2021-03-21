@@ -9,6 +9,7 @@ import Corpo from "./Corpo";
 import Desafio, { InicieUmCiclo, CarregandoDesafio, DarDesafio } from "./Desafios";
 import Dotjorge from "./Dotjorge";
 import Fundo from "./Fundo";
+import { ModalNome } from "./ModalNivelUp";
 import Topo from "./Topo";
 
 interface JSON{

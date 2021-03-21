@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
 import desafios from '../../desafios.json';
 import Cookies from 'js-cookie';
-import ModalNivelUp, { ModalFalhei, ModalXp } from '../components/ModalNivelUp';
+import ModalNivelUp, { ModalFalhei, ModalNome, ModalXp } from '../components/ModalNivelUp';
 
 interface Desafios {
     type: 'body' | 'eye';
@@ -22,7 +22,10 @@ interface DesafiosContextoProps {
     completarDesafio: () => void;
     exibirFalhei:() => void;
     fecharModal:() => void;
+    trocarNome:(string) => void;
     modo:string;
+    nome:string;
+
 }
 
 interface DesafiosProviderProps {
@@ -32,12 +35,15 @@ interface DesafiosProviderProps {
     xpAtual: number;
     desafiosCompletos: number;
     modo:string;
+    nome:string;
+
 }
 
 export const DesafiosContexto = createContext({} as DesafiosContextoProps );
 
 export function DesafiosProvider({ children, nivel, modo, ...rest }: DesafiosProviderProps){
 
+    
     const [level, setLevel] = useState(rest.level ?? 1);
     const [xpAtual, setXpAtual] = useState(rest.xpAtual ?? 0);
     const [desafiosCompletos, setDesafiosCompletos] = useState(rest.desafiosCompletos ?? 0);
@@ -51,6 +57,14 @@ export function DesafiosProvider({ children, nivel, modo, ...rest }: DesafiosPro
 
     //console.log("...rest:\nlevel: " + rest.level + "\n xpAtual: " + rest.xpAtual + "\nDesafiosCompletos: " + rest.desafiosCompletos);
     
+    //Nome
+    const [nome, setNome] = useState(rest.nome);
+    if(nome === 'undefined')
+    setNome('');
+
+    useEffect(() => {
+        Cookies.set('nome', nome);
+  }, [nome])
 
     //Notificaçao
     useEffect(() =>{
@@ -150,6 +164,10 @@ export function DesafiosProvider({ children, nivel, modo, ...rest }: DesafiosPro
         setModalAberto(null);
     }
 
+    function trocarNome(arg){
+        setNome(arg);
+    }
+
     return(
         <DesafiosContexto.Provider value={{ 
             level, 
@@ -164,9 +182,12 @@ export function DesafiosProvider({ children, nivel, modo, ...rest }: DesafiosPro
             completarDesafio,
             exibirFalhei,
             fecharModal,
-            modo
+            trocarNome,
+            modo,
+            nome
             }}>
             {children}
+            {nome === '' && <ModalNome/>}
             {modalAberto && <ModalNivelUp/>}
             {modalXp && !modalAberto && <ModalXp xp={modalXp}/>}
             {modalFalhei && <ModalFalhei/>}
