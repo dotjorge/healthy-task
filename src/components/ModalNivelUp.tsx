@@ -3,6 +3,7 @@ import { DesafiosContexto } from '../contextos/DesafiosContexto';
 import styled from 'styled-components'
 import { GetServerSideProps } from 'next';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 
 const Falhei = styled.div`
     position:absolute;
@@ -360,12 +361,12 @@ const NomeFundo = styled.div`
 
     > div{
         position:absolute;
-        right:10px;
+        right:20px;
         top:140px;
         width:100%;
         max-width:300px;
         background:var(--verde);
-        border-radius:25px;
+        border-radius:10px;
         padding:20px;
         opacity:.9;
         
@@ -382,23 +383,24 @@ const NomeFundo = styled.div`
     }
 
     input{
-        padding:10px 20px;
+        padding:15px 25px;
         border:none;
         outline:none;
         border-radius:10px;
-        background:var(--preto);
-        color:var(--branco);
+        background:var(--branco);
+        opacity:.7;
+        color:var(--preto);
+        margin:10px 0px;
     }
 
     button{
         position:relative;
-        margin-top:10px;
         font-size:20px;
         font-weight:900;
-        padding:5px 20px;
+        padding:10px 25px;
         border:none;
         background:var(--preto);
-        border-radius:5px;
+        border-radius:10px;
         color:var(--branco);
         cursor:pointer;
         outline:none;
@@ -406,10 +408,55 @@ const NomeFundo = styled.div`
         display:inline-flex;
         align-items:center;
         justify-content:center;
+        opacity:1;
+        &:hover{
+            opacity:.9;
+        }
+
+
+        &:before{
+            content:'>';
+            color:var(--verde);
+            margin-right:-14px;
+            opacity:0;
+            transition:.2s ease;
+        }
+
+        &:hover:not([disabled]):before{
+            margin-right:5px;
+            opacity:1;
+        }
+
 
         &:disabled{
             opacity:.7;
-            cursor:default;
+            cursor:not-allowed;
+        }
+
+        &:disabled:hover{
+            margin-bottom:12px;
+            animation:campoVazio .2s ease;
+        }
+
+        @keyframes campoVazio{
+            0%{transform:translateY(0%)}
+            50%{transform:translateY(-5px)}
+            100%{transform:translateY(0%)}
+        }
+        &:disabled:after{
+            content:'Nome vazio.';
+            position:absolute;
+            left:0;
+            bottom:-18px;
+            font-weight:500;
+            font-size:12px;
+            color:var(--preto);
+            opacity:0;
+            transition:.2s ease;
+        }
+
+        &:disabled:hover:after{
+            opacity:1;
         }
     }
 
@@ -417,7 +464,7 @@ const NomeFundo = styled.div`
         margin:0;
         font-weight:400;
         strong{
-            font-weight:900;
+            font-weight:700;
         }
     }
 
@@ -430,6 +477,8 @@ const NomeFundo = styled.div`
 export function ModalNome({...props}){
     const { nome, trocarNome, fecharModal } = useContext(DesafiosContexto);
     const [nomeEscolhido, setNomeEscolhido] = useState("");
+
+    
     return(
         <>
             <Nome>

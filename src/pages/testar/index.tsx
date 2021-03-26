@@ -49,13 +49,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const res = await fetch('https://api.github.com/users/dotjorge');
   const json = await res.json();
 
-  const { level_debug, xpAtual_debug, desafiosCompletos_debug } = ctx.req.cookies;
+  const { level_debug, xpAtual_debug, desafiosCompletos_debug, nome } = ctx.req.cookies;
   return {
     props:{
       level: Number(level_debug),
       xpAtual: Number(xpAtual_debug),
       desafiosCompletos: Number(desafiosCompletos_debug),
-      git: json
+      git: json,
+      nome: String(nome)
     },
   }
 }

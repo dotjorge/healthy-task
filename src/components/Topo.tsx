@@ -315,7 +315,7 @@ export default function Topo({level,git,...props}){
                   style={{display:'none'}}
                   />
                   <div>
-                    <div>{nome}</div>
+                    <div onClick={()=>console.log('teste')}>{nome}</div>
                     <div>Level <b>{level}</b></div>
                   </div>
                 </UserInfo>

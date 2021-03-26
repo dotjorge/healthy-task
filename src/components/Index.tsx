@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import Link from "next/link";
 import React, { useContext } from "react";
 import { ContadorContexto } from "../contextos/ContadorContexto";
@@ -21,7 +22,7 @@ interface JSON{
   }
 
 export default function Index({git}:indexComponentProps){
-    
+
     const {
         colors,
         isActive,
@@ -29,7 +30,12 @@ export default function Index({git}:indexComponentProps){
         startCountdown,
         resetCountdown} = useContext(ContadorContexto);
     
-      const { modo, desafioAtivo, desafiosCompletos, level } = useContext(DesafiosContexto);
+      const { modo, desafioAtivo, desafiosCompletos, level, nome, trocarNome } = useContext(DesafiosContexto);
+
+      const router = useRouter();
+      const {name} = router.query;
+      if(name)
+      trocarNome(name);
     
         
     return(
@@ -51,9 +57,9 @@ export default function Index({git}:indexComponentProps){
                     :
                     (
                     <>
-                    { !isActive && !desafioAtivo &&
+                    { nome !== '' && !isActive && !desafioAtivo &&
                     <Corpo.AlertaVersaoTeste>
-                        <h3>Olá,</h3> seja mais produtivo e saudável hoje.
+                        <h3>Olá {nome},</h3> seja mais produtivo e saudável hoje.
                     </Corpo.AlertaVersaoTeste>
                     }
                     </>
