@@ -359,7 +359,15 @@ const NomeFundo = styled.div`
         100%{opacity:1;transform:translateY(0);visibility:visible;}
     }
 
-    > div{
+    > div {
+        width: 100%;
+        max-width: 1024px;
+        position: relative;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    div > div{
         position:absolute;
         right:20px;
         top:140px;
@@ -484,31 +492,33 @@ export function ModalNome({...props}){
             <Nome>
                 <NomeFundo {...props}>
                     <div>
-                        <h1>Para <strong>começar</strong>,</h1>
-                        <form
-                        autoComplete="off"
-                        onSubmit={function (infosDoEvento) {
-                        infosDoEvento.preventDefault();
-                        trocarNome(nomeEscolhido);
-                        }}
-                        >
-                            <input 
-                            name="nomeUsuario"
-                            type="text"
-                            onChange={function (infosDoEvento) {
-                                console.log(infosDoEvento.target.value);
-                                setNomeEscolhido(infosDoEvento.target.value);
-                                }} 
-                            placeholder={'Digite seu nome...'} 
-                            maxLength={7}
-                            ></input>
-                            <button 
-                            onClick={
-                                () => {
-                                    }
-                            } 
-                            disabled={nomeEscolhido.length === 0}>Continuar</button>
-                        </form>
+                        <div>
+                            <h1>Para <strong>começar</strong>,</h1>
+                            <form
+                            autoComplete="off"
+                            onSubmit={function (infosDoEvento) {
+                            infosDoEvento.preventDefault();
+                            trocarNome(nomeEscolhido);
+                            }}
+                            >
+                                <input 
+                                name="nomeUsuario"
+                                type="text"
+                                onChange={function (infosDoEvento) {
+                                    console.log(infosDoEvento.target.value);
+                                    setNomeEscolhido(infosDoEvento.target.value);
+                                    }} 
+                                placeholder={'Digite seu nome...'} 
+                                maxLength={7}
+                                ></input>
+                                <button 
+                                onClick={
+                                    () => {
+                                        }
+                                } 
+                                disabled={nomeEscolhido.length === 0}>Continuar</button>
+                            </form>
+                        </div>
                     </div>
                 </NomeFundo>
             </Nome>
