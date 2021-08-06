@@ -43,12 +43,12 @@ const Fundo = styled.div`
     letter-spacing:1px;
 
     //Animacao
-    animation:aparecer 5s ease forwards;
+    animation:aparecer 2s ease forwards;
     @keyframes aparecer{
         0%{opacity:0;transform:scale(1.5);visibility:hidden;}
-        10%{opacity:1;transform:scale(1);visibility:visible;}
-        90%{opacity:1;transform:scale(1);visibility:visible;}
-        100%{opacity:0;transform:scale(1.5);visibility:hidden;}
+        100%{opacity:1;transform:scale(1);visibility:visible;}
+        //90%{opacity:1;transform:scale(1);visibility:visible;}
+        //100%{opacity:0;transform:scale(1.5);visibility:hidden;}
     }
 
     > div{
